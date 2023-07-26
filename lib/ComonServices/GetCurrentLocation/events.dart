@@ -1,0 +1,2 @@
+class GetCurrentLocationEvents{}
+class GetCurrentLocationEventsStart extends GetCurrentLocationEvents{}

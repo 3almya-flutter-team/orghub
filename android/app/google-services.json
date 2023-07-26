@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "340814888947",
+    "firebase_url": "https://org-app-cef8d.firebaseio.com",
+    "project_id": "org-app-cef8d",
+    "storage_bucket": "org-app-cef8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340814888947:android:3b6f675c2a7c7c047e5c86",
+        "android_client_info": {
+          "package_name": "com.rmalsa.orghub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340814888947-t34mb0u4nj3m3md2sbibu7faulsbvsmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjDH7uniyES9Skx8r0X6E-hFw3Hjr3KSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340814888947-t34mb0u4nj3m3md2sbibu7faulsbvsmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

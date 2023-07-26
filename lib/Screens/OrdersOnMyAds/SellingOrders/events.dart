@@ -1,0 +1,3 @@
+class GetOrdersOnMySellingOrdersEvents {}
+
+class GetOrdersOnMySellingOrdersEventsStart extends GetOrdersOnMySellingOrdersEvents {}

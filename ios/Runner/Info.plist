@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>تطبيق org يريد استخدام الموسيقى  للسماح للمستخدم بتشغيل التسجيل الصوتى اثناء المحادثه</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>تطبيق org يريد استخدام ال calender  للسماح للمستخدم باختيار تاريخ الاعلان ومكان انتظار المندوب</string>
+	<key>NSCameraUsageDescription</key>
+	<string>يريد تطبيق org استخدام الكاميرا للسماح للمستخدم باضافه صور شخصيه واضافه صور فى الاعلان</string>
+	<key>NSContactsUsageDescription</key>
+	<string>يريد التطبيق اجراء المكالمات الهاتفيه لكى بتمكن المستخدم من الاتصال بصاحب الاعلان</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string> برجاء السماح لتطبيق org باستخدام الخريطه لتحديد مكان المنتج   </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string> برجاء السماح لتطبيق org باستخدام الخريطه لتحديد مكان المنتج   </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string> برجاء السماح لتطبيق org باستخدام الخريطه  باستخدام الخريطه لتحديد مكان المنتج     </string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>تطبيق org يريد استخدام الميكروفون للسماح للمستخدم بارسال تسجيل صوتى اثناء المحادثه</string>
+	<key>NSMotionUsageDescription</key>
+	<string>تطبيق org يريد استخدام ال accelerometer للسماح للمستخدم بتحديد عدد الخطوات التى يقطعها</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>يريد تطبيق org الوصول الى معرض الصور للسماح للمستخدم باضافه صور شخصيه واضافه صور فى الاعلان</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>تطبيق org يريد استخدام الميكروفون للسماح للمستخدم بارسال تسجيل صوتى اثناء المحادثه</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+</dict>
+</plist>

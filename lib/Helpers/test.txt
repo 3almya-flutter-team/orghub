@@ -1,0 +1,47 @@
+user 1 : client
+--------------
+name : khaled
+phone : 01281810920
+password :123456
+======================
+user 2 : client
+--------------
+name : jomana
+phone : 01281810921
+password :123456
+======================
+user 3 : client
+--------------
+name : soha
+phone : 01281810923
+password :123456
+======================
+company 1 : company
+--------------
+name : elnoor
+phone : 01281810922
+password :123456
+======================
+company 2 : company
+--------------
+name : elkawther
+phone : 01281810924
+password :123456
+======================
+company 3 : company
+--------------
+name : elso3ada2
+phone : 01281810925
+password :123456
+======================
+company : 01281810990 - 123456
+
+
+ <!-- android:networkSecurityConfig="@xml/network_security_config"
+            android:usesCleartextTraffic="true" -->
+
+
+Error connecting: io.socket.engineio.client.EngineIOException: xhr poll error
+
+-----------
+keytool -genkey -v -keystore /Users/apple/Desktop/RMALSA/orghub/android/app/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
