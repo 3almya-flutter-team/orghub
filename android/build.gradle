@@ -1,12 +1,14 @@
 buildscript {
+    ext.kotlin_version = '1.3.50'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
-    classpath 'com.google.gms:google-services:4.1.0' //decreased from 4.2.0
+        classpath 'com.android.tools.build:gradle:4.2.1' //<-- Make this atleast 4.2.1
+        classpath 'com.google.gms:google-services:4.3.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -14,6 +16,11 @@ allprojects {
     repositories {
         google()
         jcenter()
+          configurations.all {
+            resolutionStrategy {
+                force 'com.google.android.gms:play-services-location:16.0.0'
+            }
+        }
     }
 }
 

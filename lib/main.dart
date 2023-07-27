@@ -1,10 +1,9 @@
-import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
@@ -16,26 +15,17 @@ import 'Helpers/app_globals.dart';
 import 'Helpers/app_theme.dart';
 // import 'Helpers/prefs.dart';
 import 'Screens/Auth/CheckUserAuth/init_app_bloc.dart';
+import 'Screens/firebase_option.dart';
 
 GetIt getIt = GetIt.instance;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await translator.init(
-    languagesList: <String>['ar', 'en'],
-    assetsDirectory: 'assets/langs/',
-  );
-
-  initServiceLocator();
-  // change the status bar color to material color [green-400]
-  await FlutterStatusbarcolor.setStatusBarColor(AppTheme.primaryColor);
-  if (useWhiteForeground(AppTheme.primaryColor)) {
-    FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-  } else {
-    FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
-  }
 
   initKiwi();
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await translator.init(
+      languagesList: <String>['ar', 'en'], assetsDirectory: 'assets/langs/');
+  initServiceLocator();
   runApp(
     LocalizedApp(
       child: MyApp(),

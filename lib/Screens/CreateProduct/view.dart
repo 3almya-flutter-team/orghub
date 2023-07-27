@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:get/get_connect/http/src/multipart/multipart_file.dart' ;
+import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -167,6 +167,27 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
         });
   }
 
+  List<File> images = [];
+
+  void openImageList({BuildContext context, String type}) {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return ImageSourceSheet(
+            preferredCameraDevice: CameraDevice.rear,
+            maxHeight: 100,
+            maxWidth: 100,
+            onImageSelected: (image) {
+              print(image.toString());
+              setState(() {
+                images.add(image);
+              });
+              Navigator.of(context).pop();
+            },
+          );
+        });
+  }
+
   void _submit({BuildContext context}) async {
     if (!_fbKey.currentState.validate()) {
       return;
@@ -224,16 +245,28 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
       //     );
       //   });
       // }
+      int imageIndex = 0;
 
-      // else {
-      //   FlashHelper.errorBar(
-      //     context,
-      //     message: translator.currentLanguage == 'en'
-      //         ? "Advert images is required"
-      //         : "صور الاعلان مطلوبه",
-      //   );
-      //   return;
-      // }
+      if (images.isNotEmpty) {
+        images.forEach((file) {
+          if (file != null && file is File) {
+            print(imageIndex.toString() +
+                "====================================>");
+            adverData.putIfAbsent(
+                "images[${imageIndex++}]",
+                () => dio.MultipartFile.fromFileSync(file.path,
+                    filename: basename(file.path)));
+          }
+        });
+      } else {
+        FlashHelper.errorBar(
+          context,
+          message: translator.currentLanguage == 'en'
+              ? "Advert images is required"
+              : "صور الاعلان مطلوبه",
+        );
+        return;
+      }
 
       print("from create screen => ${adverData.toString()}");
 
@@ -563,7 +596,7 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
             maxWidth: 100,
             onImageSelected: (image) {
               setState(() {
-                selectedImages.add(image);
+                images.add(image);
               });
               Get.back();
             },
@@ -571,44 +604,44 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
         });
   }
 
-  List<Asset> images = List<Asset>();
-  String _error = 'No Error Dectected';
+  // List<Asset> images = List<Asset>();
+  // String _error = 'No Error Dectected';
 
-  Future<void> loadAssets() async {
-    List<Asset> resultList = List<Asset>();
-    String error = 'No Error Dectected';
+  // Future<void> loadAssets() async {
+  //   List<Asset> resultList = List<Asset>();
+  //   String error = 'No Error Dectected';
 
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 20,
-        enableCamera: true,
-        selectedAssets: images,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-        ),
-      );
-    } on Exception catch (e) {
-      error = e.toString();
-    }
+  //   try {
+  //     resultList = await MultiImagePicker.pickImages(
+  //       maxImages: 20,
+  //       enableCamera: true,
+  //       selectedAssets: images,
+  //       cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+  //       materialOptions: MaterialOptions(
+  //         actionBarColor: "#abcdef",
+  //         actionBarTitle: "Example App",
+  //         allViewTitle: "All Photos",
+  //         useDetailsView: false,
+  //         selectCircleStrokeColor: "#000000",
+  //       ),
+  //     );
+  //   } on Exception catch (e) {
+  //     error = e.toString();
+  //   }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+  //   // If the widget was removed from the tree while the asynchronous platform
+  //   // message was in flight, we want to discard the reply rather than calling
+  //   // setState to update our non-existent appearance.
+  //   if (!mounted) return;
 
-    print(resultList[0].name);
+  //   print(resultList[0].name);
 
-    setState(() {
-      images = resultList;
+  //   setState(() {
+  //     images = resultList;
 
-      _error = error;
-    });
-  }
+  //     _error = error;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -704,7 +737,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        loadAssets();
+                        openImagesPicker(context: context);
+                        // loadAssets();
                       },
                       child: Row(
                         children: [
@@ -750,10 +784,8 @@ class _CreateProductScreenState extends State<CreateProductScreen> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(6),
-                                          child: AssetThumb(
-                                            asset: images[index],
-                                            width: 100,
-                                            height: 100,
+                                          child: Image.file(
+                                            images[index],
                                           ),
                                         ),
                                       ),

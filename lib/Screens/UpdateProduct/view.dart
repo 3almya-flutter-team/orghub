@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:dio/dio.dart'as dio;
+import 'package:dio/dio.dart' as dio;
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -296,6 +296,18 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
         );
       }
 
+      int imageIndex = 0;
+      selectedImages.forEach((file) {
+        if (file != null && file is File) {
+          print(
+              imageIndex.toString() + "====================================>");
+          adverData.putIfAbsent(
+              "images[${imageIndex++}]",
+              () => dio.MultipartFile.fromFileSync(file.path,
+                  filename: basename(file.path)));
+        }
+      });
+
       // if (selectedImages) {
       //   print("=-=-=-= [ YEAH IAM HERE ] =-=-=-==");
       //   adverData.update(
@@ -437,45 +449,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
         });
   }
 
-  List<Asset> images = List<Asset>();
-  String _error = 'No Error Dectected';
-
-  Future<void> loadAssets() async {
-    List<Asset> resultList = List<Asset>();
-    String error = 'No Error Dectected';
-
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 20,
-        enableCamera: true,
-        selectedAssets: images,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-        ),
-      );
-    } on Exception catch (e) {
-      error = e.toString();
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    // print(resultList[0].name);
-
-    setState(() {
-      images = resultList;
-      selectedImages.addAll(resultList);
-      _error = error;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     FlashHelper.init(context);
@@ -564,7 +537,7 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                             ),
                             InkWell(
                               onTap: () {
-                                loadAssets();
+                                openImagesPicker(context: context);
                               },
                               child: Row(
                                 children: [
@@ -612,12 +585,9 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                                                   borderRadius:
                                                       BorderRadius.circular(6),
                                                   child: selectedImages[index]
-                                                          is Asset
-                                                      ? AssetThumb(
-                                                          asset: selectedImages[
-                                                              index],
-                                                          width: 100,
-                                                          height: 100,
+                                                          is File
+                                                      ? Image.file(
+                                                          selectedImages[index],
                                                         )
                                                       : Image.network(
                                                           selectedImages[index]
@@ -631,10 +601,6 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                                                 left: 2,
                                                 child: InkWell(
                                                   onTap: () {
-                                                    selectedImages.remove(
-                                                        selectedImages[index]);
-                                                    setState(() {});
-
                                                     if (selectedImages[index]
                                                         is ImageData) {
                                                       deleteImageBloc.add(
@@ -645,6 +611,10 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                                                                   .imageId,
                                                         ),
                                                       );
+                                                      selectedImages.remove(
+                                                          selectedImages[
+                                                              index]);
+                                                      setState(() {});
                                                     }
                                                   },
                                                   child: Container(
@@ -2061,7 +2031,8 @@ class _UpdateProductScreenState extends State<UpdateProductScreen> {
                 return noInternetWidget(context);
               } else {
                 // FlashHelper.errorBar(context, message: "");
-                return errorWidget(context, oldAdvertState.msg ?? "",oldAdvertState.statusCode);
+                return errorWidget(context, oldAdvertState.msg ?? "",
+                    oldAdvertState.statusCode);
               }
             } else {
               // FlashHelper.errorBar(context, message: "");
