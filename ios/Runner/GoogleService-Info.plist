@@ -28,7 +28,7 @@
 	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
-	<key>GOOGLE_APP_ID</key>
+	<key>GOOGLE_APP_ID</key> 
 	<string>1:340814888947:ios:56d9a64e67dbd67c7e5c86</string>
 	<key>DATABASE_URL</key>
 	<string>https://org-app-cef8d.firebaseio.com</string>

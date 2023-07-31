@@ -58,12 +58,12 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC7VvFAMRcdYIG5AuIV3yviWTwu1pUkzOg',
-    appId: '1:947681443956:ios:a6ef2d9e6677c6cf32d121',
-    messagingSenderId: '947681443956',
-    projectId: 'lawyer-fb786',
-    storageBucket: 'lawyer-fb786.appspot.com',
-    iosClientId: '947681443956-v71njdhrgmmmgt4pq8q3mdb6qu3m088o.apps.googleusercontent.com',
-    iosBundleId: 'com.alalmiya.lawyerClient',
+    apiKey: 'AIzaSyASZvX6ZvwpBWRES9M8D1n8UAkOD2H-lhM',
+    appId: '1:340814888947:ios:56d9a64e67dbd67c7e5c86',
+    messagingSenderId: '340814888947',
+    projectId: 'org-app-cef8d',
+    storageBucket: 'org-app-cef8d.appspot.com',
+    iosClientId: '340814888947-nho3vk68ui1p6ctio0ot7fbmhana45c7.apps.googleusercontent.com',
+    iosBundleId: 'com.rmalsa.orghubhub',
   );
 }

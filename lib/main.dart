@@ -11,6 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:orghub/ComonServices/injection_container.dart';
 import 'package:orghub/Screens/Splash/view.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
+import 'Helpers/PushNotifications.dart';
 import 'Helpers/app_globals.dart';
 import 'Helpers/app_theme.dart';
 // import 'Helpers/prefs.dart';
@@ -18,11 +19,12 @@ import 'Screens/Auth/CheckUserAuth/init_app_bloc.dart';
 import 'Screens/firebase_option.dart';
 
 GetIt getIt = GetIt.instance;
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   initKiwi();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  GlobalNotification.instance.notificationSetup();
   await translator.init(
       languagesList: <String>['ar', 'en'], assetsDirectory: 'assets/langs/');
   initServiceLocator();

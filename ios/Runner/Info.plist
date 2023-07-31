@@ -20,6 +20,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>whatsapp</string>
@@ -28,6 +32,17 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>تطبيق org يريد استخدام الموسيقى  للسماح للمستخدم بتشغيل التسجيل الصوتى اثناء المحادثه</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
+		<key>NSAppTransportSecurity</key>
+    <dict>
+        <!--Not a recommended way, there are better solutions available-->
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+
 	<key>NSCalendarsUsageDescription</key>
 	<string>تطبيق org يريد استخدام ال calender  للسماح للمستخدم باختيار تاريخ الاعلان ومكان انتظار المندوب</string>
 	<key>NSCameraUsageDescription</key>
@@ -48,6 +63,14 @@
 	<string>يريد تطبيق org الوصول الى معرض الصور للسماح للمستخدم باضافه صور شخصيه واضافه صور فى الاعلان</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>تطبيق org يريد استخدام الميكروفون للسماح للمستخدم بارسال تسجيل صوتى اثناء المحادثه</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
+
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
